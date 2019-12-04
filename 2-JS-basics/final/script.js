@@ -137,20 +137,13 @@ Mark and John are trying to compare their BMI (Body Mass Index), which is calcul
 
 GOOD LUCK 😀
 */
-/*
-var massMark = 78; // kg
-var heightMark = 1.69; // meters
+var messMark = 70;
+var heightMark = 1.81;
+var messJohn = 75;
+var heightJohn = 1.86;
 
-var massJohn = 92;
-var heightJohn = 1.95;
-
-var BMIMark = massMark / (heightMark * heightMark);
-var BMIJohn = massJohn / (heightJohn * heightJohn);
-console.log(BMIMark, BMIJohn);
-
-var markHigherBMI = BMIMark > BMIJohn;
-console.log('Is Mark\'s BMI higher than John\'s? ' + markHigherBMI);
-*/
+console.log((messMark/(heightMark^2)), (messJohn/(heightJohn^2)));
+console.log('Is Mark\'s BMI higher then John\s BMI? ' + ((messMark/(heightMark^2)) > (messJohn/(heightJohn^2))));
 
 
 
@@ -308,31 +301,35 @@ John and Mike both play basketball in different teams. In the latest 3 games, Jo
 
 GOOD LUCK 😀
 */
-/*
-var scoreJohn = (189 + 120 + 103) / 3;
-var scoreMike = (129 + 94 + 123) / 3;
-var scoreMary = (97 + 134 + 105) / 3;
-console.log(scoreJohn, scoreMike, scoreMary);
 
-if (scoreJohn > scoreMike && scoreJohn > scoreMary) {
-    console.log('John\'s team wins with ' + scoreJohn + ' points');
-} else if (scoreMike > scoreJohn && scoreMike > scoreMary) {
-    console.log('Mike\'s team wins with ' + scoreMike + ' points');
-} else if (scoreMary > scoreJohn && scoreMary > scoreMike) {
-    console.log('Mary\'s team wins with ' + scoreMary + ' points');
-} else {
-    console.log('There is a draw');
+var scoredJohn = (89 + 120 + 103) / 3;
+var scoredMike = (89 + 120 + 104) / 3;
+var scoredMary = (89 + 120 + 104) / 3;
+
+console.log(scoredJohn, scoredMike, scoredMary);
+
+switch (true) {
+    case scoredJohn > scoredMike && scoredJohn > scoredMary :
+        console.log('the winner is John\'s team scored ' + scoredJohn);
+        break;
+    case scoredMike > scoredJohn && scoredMike > scoredMary :
+        console.log('the winner is Mike\'s team scored ' + scoredMike);
+        break;
+    case scoredMary > scoredJohn && scoredMary > scoredMike :
+        console.log('the winner is Mary\'s team scored ' + scoredMary);
+        break;
+    case scoredJohn === scoredMike:
+        console.log('John and Mike are draws ' + scoredMary, scoredMike);
+        break;    
+    case scoredJohn === scoredMary:
+        console.log('John and Mary are draws ' + scoredJohn, scoredMary);
+        break;
+    case scoredMike === scoredMary:
+        console.log('Mike and Mary are draws ' + scoredMike, scoredMary);
+        break;    
+    default :
+        console.log('All teams are draws!');
 }
-
-
-if (scoreJohn > scoreMike) {
-    console.log('John\'s team wins with ' + scoreJohn + ' points');
-} else if (scoreMike > scoreJohn) {
-    console.log('Mike\'s team wins with ' + scoreMike + ' points');
-} else {
-    console.log('There is a draw');
-}
-*/
 
 
 
@@ -450,32 +447,23 @@ In the end, John would like to have 2 arrays:
 
 GOOD LUCK 😀
 */
-/*
-function tipCalculator(bill) {
+var tipCalculator = function (bill) {
     var percentage;
     if (bill < 50) {
         percentage = .2;
-    } else if (bill >= 50 && bill < 200) {
+    } else if (bill >= 50 && bill <= 200) {
         percentage = .15;
     } else {
         percentage = .1;
     }
-    return percentage * bill;
-}
+    return bill * percentage;
+};
+var bill  = [124, 48, 268];
+var tip = [tipCalculator(bill[0]), tipCalculator(bill[1]), tipCalculator(bill[2])];
+var totalPay = [(bill[0]+tip[0]),(bill[1]+tip[1]),(bill[2]+tip[2])];
 
-var bills = [124, 48, 268];
-var tips = [tipCalculator(bills[0]),
-            tipCalculator(bills[1]),
-            tipCalculator(bills[2])];
-
-var finalValues = [bills[0] + tips[0],
-                   bills[1] + tips[1],
-                   bills[2] + tips[2]];
-
-console.log(tips, finalValues);
-*/
-
-
+ console.log(tip);
+ console.log(totalPay);
 
 /*****************************
 * Objects and properties
@@ -546,37 +534,38 @@ Remember: BMI = mass / height^2 = mass / (height * height). (mass in kg and heig
 
 GOOD LUCK 😀
 */
-/*
-var john = {
-    fullName: 'John Smith',
-    mass: 110,
-    height: 1.95,
-    calcBMI: function() {
-        this.bmi = this.mass / (this.height * this.height);
-        return this.bmi;
-    }
-}
 
 var mark = {
-    fullName: 'Mark Miller',
-    mass: 78,
-    height: 1.69,
-    calcBMI: function() {
-        this.bmi = this.mass / (this.height * this.height);
+    fullName : 'Mark',
+    mass: 100,
+    height: 1.82,
+    carcBmi : function() {
+        this.bmi = this.mass / (this.height^2);
         return this.bmi;
     }
 }
 
-if (john.calcBMI() > mark.calcBMI()) {
-    console.log(john.fullName + ' has a higher BMI of ' + john.bmi);
-} else if (mark.bmi > john.bmi) {
-    console.log(mark.fullName + ' has a higher BMI of ' + mark.bmi);
+var john = {
+    fullName : 'John',
+    mass: 80,
+    height: 1.79,
+    carcBmi : function() {
+        this.bmi = this.mass / (this.height^2);
+        return this.bmi;
+    }
+}
+
+mark.carcBmi();
+john.carcBmi();
+
+console.log(mark.bmi, john.bmi);
+if (mark.bmi > john.bmi) {
+    console.log(mark.fullName + ' has the highest BMI');
+} else if (mark.bmi < john.bmi) {
+    console.log(john.fullName + ' has the highest BMI');
 } else {
     console.log('They have the same BMI');
 }
-*/
-
-
 
 /*****************************
 * Loops and iteration
