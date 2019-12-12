@@ -122,6 +122,7 @@ c) correct answer (I would use a number for this)
             return score;
         }
     }
+    // where that keeps and updates the score each time when the right answer the user gave is correct
     var keepScore = addScore();
 
     displayQustion();
